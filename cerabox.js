@@ -52,6 +52,7 @@ window.CeraBox = new Class({
 		width:			            null,
 		height:			            null,
 		displayTitle:	            true,
+		forceTitle:                 false,
 		fullSize:		            false, // Does not effect mobile view
 		displayOverlay:	            true, // Does not effect mobile view
 		clickToClose:	            false,
@@ -498,8 +499,8 @@ window.CeraBox = new Class({
 									if (false===ceraBox.boxWindow.getBusy() && !ceraBox.boxWindow.getWindowOpen())
 										return;
 
-									//if (false!==ceraBox.options.displayTitle)
-									//ceraBox.boxWindow.displayTitle((currentItem.get('title')?currentItem.get('title'):''), ceraBox.currentItem+1, ceraBox.collection.length);
+									if (false!==ceraBox.options.displayTitle)
+									ceraBox.boxWindow.displayTitle((currentItem.get('title')?currentItem.get('title'):''), ceraBox.currentItem+1, ceraBox.collection.length);
 
 									ceraBox.boxWindow.openWindow();
 								});
@@ -1132,7 +1133,7 @@ window.CeraBoxWindow = (function(window) {
 		height = height || currentDimension.y;
 
 		// Clear title
-		if (!currentInstance.options.displayTitle || cerabox.getElement('.cerabox-content iframe.ceraIframe')) {
+		if (!currentInstance.options.forceTitle && (!currentInstance.options.displayTitle || cerabox.getElement('.cerabox-content iframe.ceraIframe'))) {
 			_instance.hideTitle();
 		}
 
