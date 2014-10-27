@@ -1049,7 +1049,7 @@ window.CeraBoxWindow = (function(window) {
 
 				if (!forceFullSize && false===currentInstance.options.fullSize) {
 					if ((viewport.y - 100)<eleHeight) {
-						eleWidth = eleWidth + (Browser.Platform.mac?15:17);
+						eleWidth = eleWidth + (Browser.platform === 'mac'?15:17);
 					}
 					return {width: (viewport.x - 50)<eleWidth?(viewport.x - 50):eleWidth, height: (viewport.y - 100)<eleHeight?(viewport.y - 100):eleHeight};
 				}
